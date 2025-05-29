@@ -8,7 +8,7 @@
     margin-top: 10px;
 }   
     .card-body{
-        height: 190px;
+        height: 200px;
         // padding: 1.3rem;
 
         .card-text{
@@ -19,6 +19,7 @@
         p{
             font-size: 16px;
             font-weight: 400;
+            margin-bottom: 15px !important;
 
             .category-text,.price-text{
                 font-weight: 600;
