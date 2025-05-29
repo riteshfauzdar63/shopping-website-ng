@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    padding: 10px;
+    .nav-link.active {
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+    
+}
+    .btn{
+        padding: 10px;
+    }
+}
