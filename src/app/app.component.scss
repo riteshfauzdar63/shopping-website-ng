@@ -1,17 +1,41 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-nav{
+nav {
     padding: 10px;
+
     .nav-link.active {
-    font-weight: 500;
-    padding-bottom: 5px;
-    border-bottom: 1px solid black;
-    
-}
-    .btn{
+        font-weight: 500;
+        padding-bottom: 5px;
+        border-bottom: 1px solid black;
+
+    }
+
+    .btn {
         padding: 10px;
+    }
+
+
+
+    .cart-icon-div {
+        position: relative;
+
+        .count-item {
+            position: absolute;
+            background-color: rgb(240, 34, 34);
+            font-size: 12px;
+            padding: 2px 7px;
+            /* top: -5px; */
+            bottom: 17px;
+            left: 17px;
+            border-radius: 50%;
+        }
+
+        .cart-icon {
+            width: 35px;
+            height: 35px;
+        }
     }
 }

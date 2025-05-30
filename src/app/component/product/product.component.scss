@@ -8,7 +8,7 @@
     margin-top: 10px;
 }   
     .card-body{
-        height: 200px;
+        height: 190px;
         // padding: 1.3rem;
 
         .card-text{
@@ -26,6 +26,38 @@
                 font-size: 16px;
                 text-transform: capitalize;
             }
+        }
+    }
+
+    .card-footer{
+        width: 100%;
+
+        @media screen and (min-width: 1024px) and (max-width:1296px) {
+            flex-direction: column;
+        }
+        .bottom-box{
+            @media screen and (min-width: 1024px) and (max-width:1296px) {
+           justify-content: space-between;
+        }
+            
+        }
+        .item-count-span{
+            margin: 0px 10px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .bottom-btn{
+            
+            font-weight: 500;
+            padding: 8px 25px;
+            // height: 100%;
+            border: 0px;
+            background: #d42020;
+            color: white;
+        }
+
+        .btn{
+            font-size: 16px !important;
         }
     }
 }

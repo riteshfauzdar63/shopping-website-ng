@@ -10,8 +10,13 @@
                         <p ><span class="price-text">Price:</span>  ₹ <span>{{product.price}}</span></p>
                         <p ><span class="category-text">category:</span> {{product.category}}</p>
                     </div>
-                    <div class="card-footer bg-white border-0">
-                        <button class="btn btn-outline-danger">Add to Cart</button>
+                    <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
+                        <div class="bottom-box border border-dark d-flex align-items-center">
+                            <button class="bottom-btn">+</button>
+                            <span class="item-count-span">0</span>
+                            <button class="bottom-btn">-</button>
+                        </div>
+                        <button class="btn btn-outline-danger rounded-0" onclick="saveDataInLocalStorage()">Add to Cart</button>
                     </div>
                 </div>
         </div>

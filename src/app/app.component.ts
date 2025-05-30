@@ -12,4 +12,10 @@ import { ProductComponent } from "./component/product/product.component";
 export class AppComponent {
   title = 'shopping-website';
 
+  countItem : number = 0;
+
+  addToCartbtn(){
+    this.countItem = this.countItem + 1;
+    console.log(this.countItem);
+  }
 }
