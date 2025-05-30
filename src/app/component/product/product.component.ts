@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild,} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GetProductDataService } from '../../service/get-product-data.service';
 import { Product } from '../../product.model';
+import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
 
 @Component({
   selector: 'app-product',
@@ -12,13 +13,20 @@ import { Product } from '../../product.model';
 
 export class ProductComponent implements OnInit{
 
-
    productList : Product[] = [];
+  itemCount : number = 0;
 
-    constructor(private productData : GetProductDataService){ }
+  // @ViewChild('addBtn')AddElement! : ElementRef<HTMLButtonElement>
+  // @ViewChild('subBtn')SubtElement! : ElementRef<HTMLButtonElement>
+
+  
+
+
+  constructor(private productData : GetProductDataService, private localStorageData : LocalStorageSessionDataService) { }
 
    ngOnInit(): void {
     this.getproduct();
+    
   }
 
    getproduct(){
@@ -26,6 +34,7 @@ export class ProductComponent implements OnInit{
      {
       next :  (res : any)=>{
         this.productList = res;
+
         console.log(res);
         },
         error : (err : Error) =>{
@@ -34,6 +43,20 @@ export class ProductComponent implements OnInit{
      })
     }
 
+    saveDataInLocalStorage(product:any): void{
+      this.saveUser(product);
+      console.log(product);
+    }
+     saveUser(Product: any): void {
+    this.localStorageData.saveProductToSession(Product);
+    alert(`User ${Product.id} saved to sessionStorage.`);
+    }
+
+    
+
+    
+    
+    
     
 }
 

@@ -12,11 +12,11 @@
                     </div>
                     <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
                         <div class="bottom-box border border-dark d-flex align-items-center">
-                            <button class="bottom-btn">+</button>
-                            <span class="item-count-span">0</span>
-                            <button class="bottom-btn">-</button>
+                            <button id="addBtn" class="bottom-btn"  >+</button>
+                            <span #ItemCount class="item-count-span">{{itemCount}} </span>
+                            <button #subBtn class="bottom-btn"  >-</button>
                         </div>
-                        <button class="btn btn-outline-danger rounded-0" onclick="saveDataInLocalStorage()">Add to Cart</button>
+                        <button class="btn btn-outline-danger rounded-0" (click)="saveDataInLocalStorage(product)">Add to Cart</button>
                     </div>
                 </div>
         </div>
