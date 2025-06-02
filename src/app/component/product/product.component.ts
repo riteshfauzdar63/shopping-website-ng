@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { GetProductDataService } from '../../service/get-product-data.service';
 import { Product } from '../../product.model';
 import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule],
+  imports: [CommonModule,MatSelectModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -14,6 +15,9 @@ import { LocalStorageSessionDataService } from '../../service/local-storage-sess
 export class ProductComponent implements OnInit{
 
    productList : Product[] = [];
+   filterProductList : Product[] = [];
+   sortOption: string = '';
+   selectedCategory : string = '';
   itemCount : number = 0;
 
   // @ViewChild('addBtn')AddElement! : ElementRef<HTMLButtonElement>
@@ -26,7 +30,6 @@ export class ProductComponent implements OnInit{
 
    ngOnInit(): void {
     this.getproduct();
-    
   }
 
    getproduct(){
@@ -34,14 +37,36 @@ export class ProductComponent implements OnInit{
      {
       next :  (res : any)=>{
         this.productList = res;
-
-        console.log(res);
+        this.filterProductList = res;
         },
         error : (err : Error) =>{
           console.warn(err);
         },
      })
     }
+
+    onSortChange() {
+  if (this.sortOption === 'highToLow') {
+    this.filterProductList.sort((a, b) => b.price - a.price);
+  } else if (this.sortOption === 'lowToHigh') {
+    this.filterProductList.sort((a, b) => a.price - b.price);
+  }
+ 
+}
+
+  filterbyCategory(){
+    if(this.selectedCategory){
+      this.filterProductList = this.productList.filter(product =>{
+        return product.category.toLowerCase() === this.selectedCategory.toLowerCase()
+      });
+    }
+    else{
+      this.filterProductList = this.productList;
+    }
+  }
+  // toResetChange(){
+  //   this.sortOption = '';
+  // }
 
     saveDataInLocalStorage(product:any): void{
       this.saveUser(product);
@@ -59,16 +84,3 @@ export class ProductComponent implements OnInit{
     
     
 }
-
-// {
-//     "id": 1,
-//     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-//     "price": 109.95,
-//     "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-//     "category": "men's clothing",
-//     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-//     "rating": {
-//       "rate": 3.9,
-//       "count": 120
-//     }
-//   }

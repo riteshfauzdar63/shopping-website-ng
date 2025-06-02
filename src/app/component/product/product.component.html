@@ -1,24 +1,66 @@
+<div class="d-flex justify-content-between align-items-center">
 
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label><small>Filter-by-Categoreis</small></mat-label>
+            <mat-select [(value)]="selectedCategory" (selectionChange)="filterbyCategory()">
+                <mat-option [value]="''">All Categories</mat-option>
+                <mat-option [value]="'electronics'">
+                    electronics
+                </mat-option>
+                <mat-option [value]="'jewelery'">
+                    jewelery
+                </mat-option>
+                <mat-option [value]="'men\'s clothing'">
+                    Men's clothing
+                </mat-option>
+                <mat-option [value]="'women\'s clothing'">
+                    Women's clothing
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
+        <!-- <button class="btn btn-lg border-0" (click)="toResetChange()">Reset</button> -->
+    </div>
+
+    <div>
+    <mat-form-field>
+        <mat-label><small>Sort-By-Price</small></mat-label>
+        <mat-select [(value)]="sortOption" (selectionChange)="onSortChange()">
+            <mat-option [value]="''">Original</mat-option>
+            <mat-option value="highToLow">
+                High-to-Low
+            </mat-option>
+            <mat-option value="lowToHigh">
+                Low-to-High
+            </mat-option>
+
+        </mat-select>
+    </mat-form-field>
+    <!-- <div class="btn btn-lg border-0">Reset</div> -->
+    </div>
+</div>
 
 <div class="container-fluid mt-3">
     <div class="row">
-            <div class="col-lg-3 col-md-6 col-12" *ngFor="let product of productList ">
-                <div class="card d-flex align-items-center mb-3">
-                    <img class="card-img-top" [src]="product.image" alt="{{ product.title }}">
-                    <div class="card-body text-center">
-                        <p class="card-text">{{product.title | slice:0:57 }}</p>
-                        <p ><span class="price-text">Price:</span>  ₹ <span>{{product.price}}</span></p>
-                        <p ><span class="category-text">category:</span> {{product.category}}</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
-                        <div class="bottom-box border border-dark d-flex align-items-center">
-                            <button id="addBtn" class="bottom-btn"  >+</button>
-                            <span #ItemCount class="item-count-span">{{itemCount}} </span>
-                            <button #subBtn class="bottom-btn"  >-</button>
-                        </div>
-                        <button class="btn btn-outline-danger rounded-0" (click)="saveDataInLocalStorage(product)">Add to Cart</button>
-                    </div>
+        <div class="col-lg-3 col-md-6 col-12" *ngFor="let product of filterProductList ">
+            <div class="card d-flex align-items-center mb-3">
+                <img class="card-img-top" [src]="product.image" alt="{{ product.title }}">
+                <div class="card-body text-center">
+                    <p class="card-text">{{product.title | slice:0:57 }}</p>
+                    <p><span class="price-text">Price:</span> ₹ <span>{{product.price}}</span></p>
+                    <p><span class="category-text">category:</span> {{product.category}}</p>
                 </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
+                    <div class="bottom-box border border-dark d-flex align-items-center">
+                        <button id="addBtn" class="bottom-btn">+</button>
+                        <span #ItemCount class="item-count-span">{{itemCount}} </span>
+                        <button #subBtn class="bottom-btn">-</button>
+                    </div>
+                    <button class="btn btn-outline-danger rounded-0" (click)="saveDataInLocalStorage(product)">Add to
+                        Cart</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
