@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
@@ -7,6 +7,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(),
-   MatSelectModule,
+   MatSelectModule, RouterModule
   ]
 };

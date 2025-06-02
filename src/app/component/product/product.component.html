@@ -50,6 +50,7 @@
                     <p class="card-text">{{product.title | slice:0:57 }}</p>
                     <p><span class="price-text">Price:</span> ₹ <span>{{product.price}}</span></p>
                     <p><span class="category-text">category:</span> {{product.category}}</p>
+                    <button (click)="viewDetails(product.id)">see details</button>
                 </div>
                 <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
                     <div class="bottom-box border border-dark d-flex align-items-center">

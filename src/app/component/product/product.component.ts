@@ -4,12 +4,14 @@ import { GetProductDataService } from '../../service/get-product-data.service';
 import { Product } from '../../product.model';
 import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
 import {MatSelectModule} from '@angular/material/select';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule,MatSelectModule],
+  imports: [CommonModule,MatSelectModule,],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.scss'
+  styleUrl: './product.component.scss',
+  standalone: true
 })
 
 export class ProductComponent implements OnInit{
@@ -26,7 +28,9 @@ export class ProductComponent implements OnInit{
   
 
 
-  constructor(private productData : GetProductDataService, private localStorageData : LocalStorageSessionDataService) { }
+  constructor(private productData : GetProductDataService,
+             private localStorageData : LocalStorageSessionDataService,
+            private router: Router) { }
 
    ngOnInit(): void {
     this.getproduct();
@@ -44,6 +48,12 @@ export class ProductComponent implements OnInit{
         },
      })
     }
+
+    viewDetails(id: number) {
+      console.log('page is connected successful');
+    this.router.navigate(['/detail', id],) ; 
+  }
+
 
     onSortChange() {
   if (this.sortOption === 'highToLow') {
