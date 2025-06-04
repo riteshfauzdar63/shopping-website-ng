@@ -1,9 +1,31 @@
+<div class="container-fluid" *ngIf="product">
+    <button class="btn btn-outline-success rounded-0 mt-3 mb-4">Go Back</button>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 p-3">
+            <img [src]="product.image" class="product-img" />
 
+            
 
-<div *ngIf="product">
-  <h2>{{ product.title }}</h2>
-  <img [src]="product.image" style="width:200px;" />
-  <p><strong>Price:</strong> ₹{{ product.price }}</p>
-  <p><strong>Description:</strong> {{ product.description }}</p>
-  <p><strong>Category:</strong> {{ product.category }}</p>
+            <div class="quantity-box border border-dark d-flex mt-2 align-items-center">
+                <button (click)="handleQuantity('plus')" class="btn btn-danger border-danger rounded-0 flex-fill">+</button>
+                <span class="item-count-span flex-fill text-center">{{productQuantity}}</span>
+                <button (click)="handleQuantity('min')" class="btn btn-danger border-danger rounded-0 flex-fill">-</button>
+            </div>
+
+            <div class=" d-flex w-100 mt-3 ">
+                <button class="btn btn-outline-warning rounded-0 flex-fill me-2 btn-lg">Buy Now</button>
+
+                <button class="btn btn-outline-danger rounded-0 flex-fill btn-lg"
+                    (click)="addTocart(product)">Add to
+                    Cart</button>
+
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <h2>{{ product.title }}</h2>
+            <p><strong>Price:</strong> ₹{{ product.price }}</p>
+            <p><strong>Description:</strong> {{ product.description }}</p>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+        </div>
+    </div>
 </div>

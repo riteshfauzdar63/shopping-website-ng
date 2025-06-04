@@ -27,7 +27,6 @@
     <mat-form-field>
         <mat-label><small>Sort-By-Price</small></mat-label>
         <mat-select [(value)]="sortOption" (selectionChange)="onSortChange()">
-            <mat-option [value]="''">Original</mat-option>
             <mat-option value="highToLow">
                 High-to-Low
             </mat-option>
@@ -45,21 +44,15 @@
     <div class="row">
         <div class="col-lg-3 col-md-6 col-12" *ngFor="let product of filterProductList ">
             <div class="card d-flex align-items-center mb-3">
-                <img class="card-img-top" [src]="product.image" alt="{{ product.title }}">
+                <a [routerLink] ="['/details', product.id]"><img class="card-img-top" [src]="product.image" alt="{{ product.title }}"></a>
                 <div class="card-body text-center">
-                    <p class="card-text">{{product.title | slice:0:57 }}</p>
+                    <p class="card-text">{{product.title | slice:0:35 }}</p>
                     <p><span class="price-text">Price:</span> ₹ <span>{{product.price}}</span></p>
                     <p><span class="category-text">category:</span> {{product.category}}</p>
-                    <button (click)="viewDetails(product.id)">see details</button>
+                    
                 </div>
-                <div class="card-footer bg-white border-0 d-flex justify-content-between gap-xl-3 gap-lg-1">
-                    <div class="bottom-box border border-dark d-flex align-items-center">
-                        <button id="addBtn" class="bottom-btn">+</button>
-                        <span #ItemCount class="item-count-span">{{itemCount}} </span>
-                        <button #subBtn class="bottom-btn">-</button>
-                    </div>
-                    <button class="btn btn-outline-danger rounded-0" (click)="saveDataInLocalStorage(product)">Add to
-                        Cart</button>
+                <div class="card-footer text-center">
+                    <a [routerLink] ="['/details', product.id]">see details</a>
                 </div>
             </div>
         </div>

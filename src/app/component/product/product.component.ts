@@ -2,13 +2,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild,} from '@angula
 import { CommonModule } from '@angular/common';
 import { GetProductDataService } from '../../service/get-product-data.service';
 import { Product } from '../../product.model';
-import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
 import {MatSelectModule} from '@angular/material/select';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule,MatSelectModule,],
+  imports: [CommonModule,MatSelectModule,RouterModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
   standalone: true
@@ -20,7 +19,7 @@ export class ProductComponent implements OnInit{
    filterProductList : Product[] = [];
    sortOption: string = '';
    selectedCategory : string = '';
-  itemCount : number = 0;
+  
 
   // @ViewChild('addBtn')AddElement! : ElementRef<HTMLButtonElement>
   // @ViewChild('subBtn')SubtElement! : ElementRef<HTMLButtonElement>
@@ -29,7 +28,7 @@ export class ProductComponent implements OnInit{
 
 
   constructor(private productData : GetProductDataService,
-             private localStorageData : LocalStorageSessionDataService,
+             
             private router: Router) { }
 
    ngOnInit(): void {
@@ -48,11 +47,6 @@ export class ProductComponent implements OnInit{
         },
      })
     }
-
-    viewDetails(id: number) {
-      console.log('page is connected successful');
-    this.router.navigate(['/detail', id],) ; 
-  }
 
 
     onSortChange() {
@@ -78,14 +72,7 @@ export class ProductComponent implements OnInit{
   //   this.sortOption = '';
   // }
 
-    saveDataInLocalStorage(product:any): void{
-      this.saveUser(product);
-      console.log(product);
-    }
-     saveUser(Product: any): void {
-    this.localStorageData.saveProductToSession(Product);
-    alert(`User ${Product.id} saved to sessionStorage.`);
-    }
+   
 
     
 
