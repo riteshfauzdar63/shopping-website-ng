@@ -64,5 +64,10 @@
     }
 }
 
-
+@media screen and (max-width: 475px) {
+    mat-form-field{
+        width: 85%;
+    }
+    
+}
 
