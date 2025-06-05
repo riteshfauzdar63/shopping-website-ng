@@ -14,7 +14,7 @@
                 <button (click)="handleQuantity(products,'plus')" class="btn btn-sm btn-danger border-danger rounded-0 flex-fill">+</button>
             </div>
 
-    <p><strong> ₹ {{ products.price }}</strong> </p>
+    <p><strong> ₹ ${{ products.price * products.quantity }}</strong> </p>
     <button class="btn btn-outline-danger" (click)="deleteItem(products.id)">Click To Remove</button>
     </div>
     

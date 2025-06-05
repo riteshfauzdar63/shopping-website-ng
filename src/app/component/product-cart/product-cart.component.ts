@@ -44,6 +44,8 @@ calculateTotal() {
   }, 0);
 }
 
+
+
 goToCheckout(){
   this.router.navigate(['/checkoutForm']);
 }
