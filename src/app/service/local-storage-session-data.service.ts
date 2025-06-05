@@ -5,11 +5,12 @@ import { Product } from '../product.model';
 })
 export class LocalStorageSessionDataService {
 
+   TotalItem = localStorage.length;
    saveProductToSession(product: Product): void {
     localStorage.setItem(`${product.id}`, JSON.stringify(product));
   }
 
-   TotalItem = localStorage.length;
+  
 
   // Retrieve user by ID
   getProductFromSession(productId: string) {

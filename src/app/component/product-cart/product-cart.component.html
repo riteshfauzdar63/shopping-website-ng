@@ -4,12 +4,17 @@
     <div class="col-8">
       <ul>
   <li *ngFor="let products of cartItems" class="d-flex mt-3 align-items-center border p-4">
-    <a [routerLink] ="['/details', products.id]"><img style="width: 135px; height: 135px;" [src]="products.image" alt="{{ products.title }}" class="me-4"></a>
+    <a [routerLink] ="['/details', products.id]"><img style="width: 145px; height: 145px;" [src]="products.image" alt="{{ products.title }}" class="me-4"></a>
     <div>
-      <h5>Name : {{products.title}}</h5>
-    <p>product-Category : <strong>{{ products.category }}</strong></p>
-    <p>product-Quantity : {{  products.quantity }}</p>
-    <p><strong> ₹{{products.price}}</strong> </p>
+      <h5>{{products.title}}</h5>
+    <p>Category : <strong>{{ products.category }}</strong></p>
+    <div class="quantity-box border border-dark d-flex mt-2 align-items-center">
+                <button (click)="handleQuantity(products,'min')" class="btn btn-sm btn-danger border-danger rounded-0 flex-fill">-</button>
+                <span class="item-count-span flex-fill text-center">{{products.quantity}}</span>
+                <button (click)="handleQuantity(products,'plus')" class="btn btn-sm btn-danger border-danger rounded-0 flex-fill">+</button>
+            </div>
+
+    <p><strong> ₹ {{ products.price }}</strong> </p>
     <button class="btn btn-outline-danger" (click)="deleteItem(products.id)">Click To Remove</button>
     </div>
     

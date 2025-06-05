@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { LocalStorageSessionDataService } from './service/local-storage-session-data.service';
 import { CommonModule } from '@angular/common';
+import { CartIconValueService } from './service/cart-icon-value.service';
 
 // import { LocalStorageSessionDataService } from './service/local-storage-session-data.service';
 
@@ -11,22 +12,22 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'shopping-website';
 
-  cartCount = 0;
-
-  constructor(private localStorageData : LocalStorageSessionDataService){
+  cartItemValue : number = 0;
+  constructor(private cartIcon : CartIconValueService){
    
   }
 
   ngOnInit(): void {
-    this.updateCount();
-    window.addEventListener('localStorage',()=>this.updateCount());
+    this.cartIcon.updateCount();
+    this.cartItemValue = this.cartIcon.cartCount;
   }
+  
 
-  updateCount(){
-    this.cartCount = this.localStorageData.TotalItem;
-  }
+  
+
+  
 
 }
