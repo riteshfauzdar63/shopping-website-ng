@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GetProductDataService } from '../../service/get-product-data.service';
 import { CommonModule } from '@angular/common';
 import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-details',
   imports: [CommonModule],
@@ -19,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute,
     private productDataservice: GetProductDataService,
     private localStorageData: LocalStorageSessionDataService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -52,5 +53,12 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  goToBack(){
+    this.router.navigate(['/']);
+  }
+
+  goTocheckOut(){
+    this.router.navigate(['/checkoutForm']);
+  }
 
 }

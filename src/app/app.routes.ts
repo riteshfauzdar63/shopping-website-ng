@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
 import { ProductComponent } from './component/product/product.component';
 import { ProductCartComponent } from './component/product-cart/product-cart.component';
+import { FormPageComponent } from './component/form-page/form-page.component';
 
 export const routes: Routes = [
     {   path : '',
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: 'cart',
         component: ProductCartComponent
+    },
+    {
+        path: 'checkoutForm',
+        component: FormPageComponent
     }
 ];

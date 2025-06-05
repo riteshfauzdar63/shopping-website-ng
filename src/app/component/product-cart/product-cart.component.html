@@ -1,10 +1,10 @@
-<p>product-cart works!</p>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-8">
       <ul>
   <li *ngFor="let products of cartItems" class="d-flex mt-3 align-items-center border p-4">
-    <img style="width: 145px; height: 145px;" [src]="products.image" alt="{{ products.title }}" class="me-4">
+    <a [routerLink] ="['/details', products.id]"><img style="width: 135px; height: 135px;" [src]="products.image" alt="{{ products.title }}" class="me-4"></a>
     <div>
       <h5>Name : {{products.title}}</h5>
     <p>product-Category : <strong>{{ products.category }}</strong></p>
@@ -19,8 +19,8 @@
 
     <div class="col-4">
       <div class="border p-3 mt-3">
-         <p class="fs-5"><strong class="me-3">Total: </strong>₹{{ totalPrice }}</p>
-    <button class="btn btn-success btn-lg">Click To Checkout</button>
+         <p class="fs-5"><strong class="me-3">Total: </strong>₹{{ totalPrice}}</p>
+    <button class="btn btn-success btn-lg" (click)="goToCheckout()">Click To Checkout</button>
       </div>
    
     </div>
