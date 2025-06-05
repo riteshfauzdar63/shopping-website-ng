@@ -1,19 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../product.model';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageSessionDataService {
 
+   private cartCountSubject = new BehaviorSubject<number>(0);
+    cartCount$ = this.cartCountSubject.asObservable();
+
+      constructor() {
+    this.updateCartCount();
+  }
+
+
+
    TotalItem = localStorage.length;
    saveProductToSession(product: Product): void {
     localStorage.setItem(`${product.id}`, JSON.stringify(product));
+    this.updateCartCount();
   }
 
   
 
   // Retrieve user by ID
   getProductFromSession(productId: string) {
+    this.updateCartCount();
   const data = localStorage.getItem(`${productId}`);
   return data ? JSON.parse(data) : null;
 }
@@ -44,13 +56,12 @@ export class LocalStorageSessionDataService {
 }
   removeProductFromSession(productId: string): void {
   localStorage.removeItem(`${productId}`);
+  this.updateCartCount();
 }
 
-  // // Optionally: remove a user
-  // removeUserFromSession(userId: string): void {
-  //   sessionStorage.removeItem(`user_${userId}`);
-  // }
-
-  // Total product in local storage
-  
+   private updateCartCount(): void {
+    // Count only product keys (assuming all keys are product IDs)
+    const count = this.getAllProductsFromSession().length;
+    this.cartCountSubject.next(count);
+  }
 }

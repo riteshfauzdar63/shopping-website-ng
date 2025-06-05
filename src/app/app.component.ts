@@ -16,13 +16,14 @@ export class AppComponent implements OnInit {
   title = 'shopping-website';
 
   cartItemValue : number = 0;
-  constructor(private cartIcon : CartIconValueService){
-   
+  constructor(
+              private localdataservice : LocalStorageSessionDataService){  
   }
 
   ngOnInit(): void {
-    this.cartIcon.updateCount();
-    this.cartItemValue = this.cartIcon.cartCount;
+     this.localdataservice.cartCount$.subscribe(count => {
+      this.cartItemValue = count;
+    });
   }
   
 
