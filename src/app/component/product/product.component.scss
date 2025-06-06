@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 
+
 .card{
 
     .card-img-top {
@@ -8,10 +9,20 @@
     object-fit: contain;
     padding: 1rem;
     margin-top: 10px;
+
+    @media screen and (max-width: 990px) {
+        max-width: 180px;
+        height: 240px;
+        padding: 0rem;
+        margin-top: 15px;
+    }
 }   
     .card-body{
         height: 190px;
         // padding: 1.3rem;
+         @media screen and (max-width: 990px) {
+            height: 170px;
+         }
 
         .card-text{
             font-size: 18px;
@@ -33,40 +44,27 @@
 
     .card-footer{
         width: 100%;
+        background-color: transparent !important;
+        border: none !important;
 
-        @media screen and (min-width: 1024px) and (max-width:1296px) {
-            flex-direction: column;
-        }
-        .bottom-box{
-            @media screen and (min-width: 1024px) and (max-width:1296px) {
-           justify-content: space-between;
-        }
-            
-        }
-        .item-count-span{
-            margin: 0px 10px;
-            font-size: 16px;
-            line-height: 20px;
-        }
-        .bottom-btn{
-            
-            font-weight: 500;
-            padding: 8px 25px;
-            // height: 100%;
-            border: 0px;
-            background: #d42020;
-            color: white;
-        }
+            a{
+                text-decoration: none;
+                text-transform: capitalize;
+                font-size: 16px;
+                color: black;
+                font-weight: 500;
 
-        .btn{
-            font-size: 16px !important;
+                
+            }
         }
+        
     }
-}
+
 
 @media screen and (max-width: 475px) {
     mat-form-field{
-        width: 85%;
+        width: 45%;
+        margin-left: 15px;
     }
     
 }

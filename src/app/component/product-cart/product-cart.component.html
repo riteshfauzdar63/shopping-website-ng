@@ -1,11 +1,15 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-8">
+    <div class="col-xl-8 col-md-9 col-sm-12">
       <ul>
-  <li *ngFor="let products of cartItems" class="d-flex mt-3 align-items-center border p-4">
-    <a [routerLink] ="['/details', products.id]"><img style="width: 145px; height: 145px;" [src]="products.image" alt="{{ products.title }}" class="me-4"></a>
-    <div>
+  <li *ngFor="let products of cartItems" class="row border mt-3 p-md-4 p-2">
+    <div class="col-lg-4 col-md-5 m-auto">
+      <a [routerLink] ="['/details', products.id]"><img style="width: 165px; height: auto;" [src]="products.image" alt="{{ products.title }}" class="me-4"></a>
+    </div>
+    
+    <div class="col-lg-8 col-md-7">
+      <div class="product-desc">
       <h5>{{products.title}}</h5>
     <p>Category : <strong>{{ products.category }}</strong></p>
     <div class="quantity-box border border-dark d-flex mt-2 align-items-center">
@@ -14,18 +18,19 @@
                 <button (click)="handleQuantity(products,'plus')" class="btn btn-sm btn-danger border-danger rounded-0 flex-fill">+</button>
             </div>
 
-    <p><strong> ₹ ${{ products.price * products.quantity }}</strong> </p>
-    <button class="btn btn-outline-danger" (click)="deleteItem(products.id)">Click To Remove</button>
+    <p><strong> ₹ {{ products.price * products.quantity }}</strong> </p>
+    <button class="btn btn-outline-danger mb-2 remove-btn" (click)="deleteItem(products.id)">Click To Remove</button>
+    </div>
     </div>
     
   </li>
 </ul>
     </div>
 
-    <div class="col-4">
-      <div class="border p-3 mt-3">
-         <p class="fs-5"><strong class="me-3">Total: </strong>₹{{ totalPrice}}</p>
-    <button class="btn btn-success btn-lg" (click)="goToCheckout()">Click To Checkout</button>
+    <div class="col-xl-4 col-md-3 col-sm-12">
+      <div class=" p-3 mt-3 ">
+         <p><strong class="me-3">Total Amount: </strong>₹ {{ totalPrice}}</p>
+    <button class="btn btn-success " (click)="goToCheckout()">Click To Checkout</button>
       </div>
    
     </div>

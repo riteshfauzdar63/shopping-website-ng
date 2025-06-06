@@ -1,5 +1,11 @@
 .product-img{
-    width: 350px;
-    height: 280px;
+    width: 320px;
+    height: 260px;
     object-fit: contain;
+}
+
+h2{
+    @media screen and (max-width:475px) {
+        font-size: 22px !important;
+    }
 }
