@@ -13,9 +13,9 @@
     </ul>
     
    
-    <div class=" me-3 cart-icon-div">
-      <span class="count-item">{{cartItemValue}}</span>
-      <a [routerLink]="['/cart']"><img src="shopping-cart.png" alt="cart-icon" class="cart-icon"></a>
+    <div class=" me-3 cart-icon-div" [routerLink]="['/cart']">
+      <span class="count-item text-white">{{cartItemValue}}</span>
+      <a ><img src="shopping-cart.png" alt="cart-icon" class="cart-icon"></a>
     </div>
 
   </div>
