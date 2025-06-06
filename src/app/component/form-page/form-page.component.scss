@@ -1,3 +1,16 @@
 .container{
-    width: 50% !important;
+    width: 40% !important;
+
+
+    @media screen and (max-width:1200px) {
+        width: 55% !important;
+    }
+
+    @media screen and (min-width:768px) and (max-width:991px) {
+        width: 65% !important;
+    }
+
+    @media screen and (max-width:575px) {
+        width: 95% !important;
+    }
 }

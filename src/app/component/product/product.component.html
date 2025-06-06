@@ -44,7 +44,7 @@
             <div class="card d-flex align-items-center mb-3">
                 <a [routerLink] ="['/details', product.id]"><img class="card-img-top" [src]="product.image" alt="{{ product.title }}"></a>
                 <div class="card-body text-center">
-                    <h2 class="card-text">{{product.title | slice:0:35 }}</h2>
+                    <h2 class="card-text">{{product.title | slice:0:36 }}</h2>
                     <p><span class="price-text">Price:</span> ₹ <span>{{product.price}}</span></p>
                     <p><span class="category-text">category:</span> {{product.category}}</p>
                     

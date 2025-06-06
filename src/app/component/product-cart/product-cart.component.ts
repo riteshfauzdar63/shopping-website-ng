@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageSessionDataService } from '../../service/local-storage-session-data.service';
 import { CartItemService } from '../../service/cart-item.service';
 import { Product } from '../../product.model';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,7 @@ import { CartIconValueService } from '../../service/cart-icon-value.service';
   styleUrl: './product-cart.component.scss',
   standalone : true,
 })
-export class ProductCartComponent {
+export class ProductCartComponent implements OnInit{
 
   cartItems: Product[] = [];
   totalPrice: number = 0;
@@ -26,7 +25,6 @@ constructor(private cartService: CartItemService,
 ngOnInit() {
   
   this.cartItems = this.cartService.getCartItems();
-  // this.handleQuantity;
   this.cartIcon.updateCount();
   this.calculateTotal();
 }
